@@ -17,11 +17,9 @@ struct CourseUtilization {
     int ref_id;
 };
 
-// Made array global so it's easier to use
 struct CourseUtilization records[MAX_RECORDS];
 int record_count = 0;
 
-// Changed function names to use team name
 void optiminds_course_util_create();
 void optiminds_course_util_update();
 void optiminds_course_util_retrieve();
@@ -35,7 +33,7 @@ void optiminds_course_util_load();
 void optiminds_course_util_complexity();
 void optiminds_course_util_algorithm_details();
 
-// Simple function to clear input
+// function to clear input
 void clear_input() {
     while (getchar() != '\n');
 }
@@ -65,7 +63,6 @@ int main() {
         scanf("%d", &choice);
         clear_input();
         
-        // Used if-else instead of switch to look more beginner-like
         if (choice == 1) {
             optiminds_course_util_create();
         }
@@ -123,7 +120,7 @@ void optiminds_course_util_create() {
     
     struct CourseUtilization new_record;
     
-    // Get all the information
+    // Getting all the information
     printf("Enter ID: ");
     scanf("%d", &new_record.id);
     clear_input();
@@ -172,7 +169,7 @@ void optiminds_course_util_update() {
     scanf("%d", &id);
     clear_input();
     
-    // Look through all records
+    // Searching through all the records
     for (i = 0; i < record_count; i++) {
         if (records[i].id == id) {
             printf("Enter new Course ID: ");
@@ -224,7 +221,7 @@ void optiminds_course_util_retrieve() {
     
     printf("\nAll Course Records:\n");
     
-    // Changed display format to show each field on new line
+    // Showing results as a block
     for (i = 0; i < record_count; i++) {
         printf("\n--- Record %d ---\n", i + 1);
         printf("ID: %d\n", records[i].id);
@@ -250,7 +247,6 @@ void optiminds_course_util_delete() {
     
     for (i = 0; i < record_count; i++) {
         if (records[i].id == id) {
-            // Move everything after this record one position back
             for (j = i; j < record_count - 1; j++) {
                 records[j] = records[j + 1];
             }
